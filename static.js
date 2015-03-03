@@ -7,3 +7,4 @@ http.createServer(function(req, res) {
     if(urlObj.pathname.indexOf("getcity") != -1) {
 	console.log(urlObj);
 	console.log
+	the world is changing
