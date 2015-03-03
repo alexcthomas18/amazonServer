@@ -15,6 +15,10 @@ http.createServer(function (req, res) {
 				console.log("City "+cities[i]);
 				var myRex = new RegExp("^"+urlObj.query["q"]);
 				console.log(myRex);
+				var result = cities[i].search(myRex);
+				if(result != -1) {
+					console.log(cities[i]);
+				}
 			}
 		});
 	} else {
