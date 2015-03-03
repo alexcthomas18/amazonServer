@@ -20,24 +20,4 @@ http.createServer(function (req, res) {
 		res.end(data);
 		});
 	}
-}).listen(8080);
-
-
-
-var options = {
-    hostname: 'localhost',
-    port: '80',
-    path: '/test1.html'
-  };
-function handleResponse(response) {
-  var serverData = '';
-  response.on('data', function (chunk) {
-    serverData += chunk;
-  });
-  response.on('end', function () {
-    console.log(serverData);
-  });
-}
-http.request(options, function(response){
-  handleResponse(response);
-}).end();
+}).listen(80);
