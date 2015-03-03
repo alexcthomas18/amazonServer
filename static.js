@@ -8,8 +8,10 @@ http.createServer(function (req, res) {
     if(urlObj.pathname.indexOf("getcity") != -1) {
 		console.log(urlObj);
 		console.log("In GetCity");
-	}
-	else {
+		fs.readFile("cities.dat.txt", function(err,data) {
+			console.log(data);
+		});
+	} else {
 		fs.readFile(ROOT_DIR + urlObj.pathname, function (err,data) {
 		if (err) {
 		  res.writeHead(404);
