@@ -7,7 +7,7 @@ http.createServer(function (req, res) {
     
     if(urlObj.pathname.indexOf("getcity") != -1) {
 		console.log(urlObj);
-		console.log();
+		console.log("In GetCity");
 	}
 	else {
 		fs.readFile(ROOT_DIR + urlObj.pathname, function (err,data) {
