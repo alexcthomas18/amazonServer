@@ -9,7 +9,13 @@ http.createServer(function (req, res) {
 		console.log(urlObj);
 		console.log("In GetCity");
 		fs.readFile("cities.dat.txt", function(err,data) {
-			console.log(data);
+			if (err) throw err;
+			var cities = data.toString().split("\n");
+			for (var i = 0; i < cities.length; i++) {
+				console.log("City "+cities[i]);
+				var myRex = new RegExp("^"+urlObj.query["q"]);
+				console.log(myRex);
+			}
 		});
 	} else {
 		fs.readFile(ROOT_DIR + urlObj.pathname, function (err,data) {
