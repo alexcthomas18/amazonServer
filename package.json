@@ -1,6 +1,6 @@
 {
 	"author" : "Alex Thomas",
-	"name" : "myServer",
+	"name" : "myServer.alexcthomas18",
 	"version" : "0.0.1",
 	"description": "My first server",
 	"main": "static",
@@ -11,8 +11,10 @@
 	"keywords": [
 		"BYU",
 		"cs360",
-		"Alex Thomas"
+		"Alex Thomas",
+		"alexcthomas18"
 	],
+	"dependencies": {},
 	"engines": {
 		"node": "*"
 	}
