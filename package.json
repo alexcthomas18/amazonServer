@@ -1,6 +1,6 @@
 {
 	"author" : "Alex Thomas",
-	"name" : "myServer.alexcthomas18",
+	"name" : "myserver.alexcthomas18",
 	"version" : "0.0.1",
 	"description": "My first server",
 	"main": "static",
