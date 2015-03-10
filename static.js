@@ -30,7 +30,7 @@ http.createServer(function (req, res) {
 		if(req.method === "POST") {
 			console.log("POST comment route");
 			// First read the form data
-	      	/*var jsonData = "";
+	      	var jsonData = "";
 	     	req.on('data', function (chunk) {
 	        	jsonData += chunk;
 	      	});
@@ -39,7 +39,7 @@ http.createServer(function (req, res) {
 	       		console.log(reqObj);
 	        	console.log("Name: "+reqObj.Name);
 	        	console.log("Comment: "+reqObj.Comment);
-			});*/
+			});
 	    }
 	} else {
 		fs.readFile(ROOT_DIR + urlObj.pathname, function (err,data) {
