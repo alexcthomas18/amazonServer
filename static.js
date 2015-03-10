@@ -64,12 +64,13 @@ http.createServer(function (req, res) {
 	            		items.toArray(function(err, itemArr){
 	              			console.log("Document Array: ");
 	              			console.log(itemArr);
+	              			res.writeHead(200);
+            				res.end(JSON.stringify(itemArr));
 	            		});
 	          		});
 	        	});
       		});
-      		res.writeHead(200);
-            res.end(JSON.stringify(itemArr));
+      		
 	    }
 	    //more of the CRUD stuff
 	} else {
