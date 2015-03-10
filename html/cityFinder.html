@@ -19,7 +19,7 @@ Suggestion: <span id="txtHint">Empty</span>
 
 <script> 
 $( "#cityfield" ).keyup(function() {
-    var url="https://alexcthomas.com/getcity?q=";
+    var url="www.alexcthomas.com/getcity?q=";
 	url+= $("#cityfield").val();
    $.getJSON(url, function(data) {
 	var everything = "<ul>";
