@@ -54,6 +54,20 @@ http.createServer(function (req, res) {
 
 	    } else if(req.method === "GET") {
 	    	console.log("IN GET");
+	    	// Read all of the database entries and return them in a JSON array
+      		var MongoClient = require('mongodb').MongoClient;
+     		MongoClient.connect("mongodb://localhost/weather", function(err, db) {
+	        	if(err) throw err;
+	        	db.collection("comments", function(err, comments){
+	          		if(err) throw err;
+	          		comments.find(function(err, items){
+	            		items.toArray(function(err, itemArr){
+	              			console.log("Document Array: ");
+	              			console.log(itemArr);
+	            		});
+	          		});
+	        	});
+      		});
 	    }
 	    //more of the CRUD stuff
 	} else {
