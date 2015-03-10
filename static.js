@@ -26,7 +26,11 @@ http.createServer(function (req, res) {
 			res.end(JSON.stringify(jsonresult));
 		});
 	} else if(urlObj.pathname.indexOf("comments") != -1) {
-
+		console.log("comment route");
+		if(req.method === "POST") {
+			console.log("POST comment route");
+			
+		}
 	} else {
 		fs.readFile(ROOT_DIR + urlObj.pathname, function (err,data) {
 		if (err) {
