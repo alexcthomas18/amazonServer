@@ -6,7 +6,12 @@
 $(document).ready(function(){
     $("button").click(function(){
     	var myobj = {Name:$("#Name").val(),Comment:$("#Comment").val()};
-        $("#json").text(JSON.stringify(myobj));
+    	var jobj = JSON.stringify(myobj);
+        $("#json").text(jobj);
+        var url = "http://www.alexcthomas.com/comment";
+        $.post(url,jobj,function(data,textStatus) {
+          $("#done").append(textStatus);
+        });
     });
 });
 </script>
@@ -21,6 +26,7 @@ $(document).ready(function(){
 <button>Serialize form values</button>
 
 <div id="json"></div>
+<div id="done"></div>
 
 </body>
 </html>

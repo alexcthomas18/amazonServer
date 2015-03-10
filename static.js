@@ -25,12 +25,21 @@ http.createServer(function (req, res) {
 			res.writeHead(200);
 			res.end(JSON.stringify(jsonresult));
 		});
-	} else if(urlObj.pathname.indexOf("comments") != -1) {
+	} else if(urlObj.pathname.indexOf("comment") != -1) {
 		console.log("comment route");
 		if(req.method === "POST") {
 			console.log("POST comment route");
-			
-		}
+			// First read the form data
+	      	var jsonData = "";
+	     	req.on('data', function (chunk) {
+	        	jsonData += chunk;
+	      	});
+	    	req.on('end', function () {
+	        	var reqObj = JSON.parse(jsonData);
+	       		console.log(reqObj);
+	        	console.log("Name: "+reqObj.Name);
+	        	console.log("Comment: "+reqObj.Comment);
+			});
 	} else {
 		fs.readFile(ROOT_DIR + urlObj.pathname, function (err,data) {
 		if (err) {
