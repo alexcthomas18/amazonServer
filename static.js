@@ -40,6 +40,7 @@ http.createServer(function (req, res) {
 	        	console.log("Name: "+reqObj.Name);
 	        	console.log("Comment: "+reqObj.Comment);
 			});
+	    }
 	} else {
 		fs.readFile(ROOT_DIR + urlObj.pathname, function (err,data) {
 		if (err) {
