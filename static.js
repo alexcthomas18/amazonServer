@@ -41,17 +41,21 @@ http.createServer(function (req, res) {
 	        	console.log("Comment: "+reqObj.Comment);
 	        	var MongoClient = require('mongodb').MongoClient;
         		MongoClient.connect("mongodb://localhost/weather", function(err, db) {
-        			console.log("inside the mongo connect");
           			if(err) throw err;
           			db.collection('comments').insert(reqObj,function(err, records) {
-          				console.log("inside the mongo insert");
             			console.log("Record added as "+records[0]._id);
           			});
+
         		});
 			});
+			res.writeHead(200);
+        	res.end("");
 			 // Now put it into the database
 
+	    } else if(req.method === "GET") {
+	    	console.log("IN GET");
 	    }
+	    //more of the CRUD stuff
 	} else {
 		fs.readFile(ROOT_DIR + urlObj.pathname, function (err,data) {
 		if (err) {
