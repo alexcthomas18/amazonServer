@@ -25,6 +25,8 @@ http.createServer(function (req, res) {
 			res.writeHead(200);
 			res.end(JSON.stringify(jsonresult));
 		});
+	} else if(urlObj.pathname.indexOf("comments") != -1) {
+
 	} else {
 		fs.readFile(ROOT_DIR + urlObj.pathname, function (err,data) {
 		if (err) {
