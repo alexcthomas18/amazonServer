@@ -68,6 +68,8 @@ http.createServer(function (req, res) {
 	          		});
 	        	});
       		});
+      		res.writeHead(200);
+            res.end(JSON.stringify(itemArr));
 	    }
 	    //more of the CRUD stuff
 	} else {
