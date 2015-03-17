@@ -38,20 +38,20 @@ var options = {
   app.get('/comment', function(req, res) {
   	console.log("In comment route");
   	var MongoClient = require('mongodb').MongoClient;
-     		MongoClient.connect("mongodb://localhost/weather", function(err, db) {
-	        	if(err) throw err;
-	        	db.collection("comments", function(err, comments){
-	          		if(err) throw err;
-	          		comments.find(function(err, items){
-	            		items.toArray(function(err, itemArr){
-	              			console.log("Document Array: ");
-	              			console.log(itemArr);
-	              			res.writeHead(200);
-            				res.end(JSON.stringify(itemArr));
-	            		});
-	          		});
-	        	});
-      		});
+	MongoClient.connect("mongodb://localhost/weather", function(err, db) {
+	if(err) throw err;
+		db.collection("comments", function(err, comments){
+			if(err) throw err;
+			comments.find(function(err, items){
+			items.toArray(function(err, itemArr){
+				console.log("Document Array: ");
+				console.log(itemArr);
+				res.writeHead(200);
+				res.end(JSON.stringify(itemArr));
+			});
+		});
+	});
+});
   });
   app.post('/comment', function (req, res) {
   	console.log("In POST comment route");
@@ -76,6 +76,4 @@ var options = {
 			});
 			res.writeHead(200);
         	res.end("");
-  	res.status(200);
-  	res.end();
   });
