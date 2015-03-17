@@ -9,10 +9,10 @@ $(document).ready(function(){
     	var jobj = JSON.stringify(myobj);
         $("#json").text(jobj);
         var url = "http://alexcthomas.com/comment";
-        /*$.post(url,jobj,function(data,textStatus) {
+        $.post(url,jobj,function(data,textStatus) {
           $("#done").append(textStatus);
-        });*/
-        jQuery.ajax ({
+        });
+        /*jQuery.ajax ({
           url: url,
           type: "POST",
           data: jobj,
@@ -21,7 +21,7 @@ $(document).ready(function(){
           success: function() {
             $("#done").append(textStatus);
           }
-        })
+        })*/
 
     });
     $("#show").click(function(){
