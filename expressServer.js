@@ -5,6 +5,10 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 var app = express();
+var basicAuth = require('basic-auth-connect');
+var auth = basicAuth(function(user, pass) {
+	return ((user === 'cs360') && (pass === 'test'));
+});
 app.use(bodyParser.json());
 var options = {
     host: '127.0.0.1',
@@ -53,7 +57,7 @@ var options = {
 	});
 });
   });
-  app.post('/comment', function (req, res) {
+  app.post('/comment', auth, function (req, res) {
   	console.log("In POST comment route");
   	console.log(req.body);
   	console.log(req.body.Name);
