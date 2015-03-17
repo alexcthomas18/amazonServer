@@ -37,10 +37,45 @@ var options = {
   });
   app.get('/comment', function(req, res) {
   	console.log("In comment route");
+  	var MongoClient = require('mongodb').MongoClient;
+     		MongoClient.connect("mongodb://localhost/weather", function(err, db) {
+	        	if(err) throw err;
+	        	db.collection("comments", function(err, comments){
+	          		if(err) throw err;
+	          		comments.find(function(err, items){
+	            		items.toArray(function(err, itemArr){
+	              			console.log("Document Array: ");
+	              			console.log(itemArr);
+	              			res.writeHead(200);
+            				res.end(JSON.stringify(itemArr));
+	            		});
+	          		});
+	        	});
+      		});
   });
   app.post('/comment', function (req, res) {
   	console.log("In POST comment route");
   	console.log(req.body);
+  		var jsonData = "";
+	     	req.on('data', function (chunk) {
+	        	jsonData += chunk;
+	      	});
+	    	req.on('end', function () {
+	        	var reqObj = JSON.parse(jsonData);
+	       		console.log(reqObj);
+	        	console.log("Name: "+reqObj.Name);
+	        	console.log("Comment: "+reqObj.Comment);
+	        	var MongoClient = require('mongodb').MongoClient;
+        		MongoClient.connect("mongodb://localhost/weather", function(err, db) {
+          			if(err) throw err;
+          			db.collection('comments').insert(reqObj,function(err, records) {
+            			console.log("Record added as "+records[0]._id);
+          			});
+
+        		});
+			});
+			res.writeHead(200);
+        	res.end("");
   	res.status(200);
   	res.end();
   });
