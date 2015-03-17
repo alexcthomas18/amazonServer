@@ -4,11 +4,11 @@ var https = require('https');
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
-var app = express();
 var basicAuth = require('basic-auth-connect');
 var auth = basicAuth(function(user, pass) {
 	return ((user === 'cs360') && (pass === 'test'));
 });
+var app = express();
 app.use(bodyParser.json());
 var options = {
     host: '127.0.0.1',
