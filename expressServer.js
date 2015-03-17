@@ -13,7 +13,7 @@ var options = {
 };
   http.createServer(app).listen(80);
   https.createServer(options, app).listen(443);
-  app.use('/', express.static('./html', {maxAge: 60*60*1000}));
+  app.use('/', express.static('./html', {maxAge: 1000}));
   app.get('/getcity', function (req, res) {
     console.log("In getcity route");
     var urlObj = url.parse(req.url, true, false);
@@ -77,4 +77,3 @@ var options = {
 	res.writeHead(200);
 	res.end("");
   });
-  
