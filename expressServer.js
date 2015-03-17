@@ -57,7 +57,7 @@ var options = {
   	console.log("In POST comment route");
   	console.log(req.body);
   	var jsonData = "";
- 	/*req.on('data', function (chunk) {
+ 	req.on('data', function (chunk) {
     	jsonData += chunk;
   	});
 	req.on('end', function () {
@@ -73,7 +73,8 @@ var options = {
   			});
 
 		});
-	});*/
+	});
 	res.writeHead(200);
 	res.end("");
   });
+  
