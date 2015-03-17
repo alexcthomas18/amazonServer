@@ -14,6 +14,7 @@ var options = {
   app.use('/', express.static('./html', {maxAge: 60*60*1000}));
   app.get('/getcity', function (req, res) {
     console.log("In getcity route");
+    var urlObj = url.parse(req.url, true, false);
     console.log(urlObj);
 		console.log("In GetCity");
 		fs.readFile("cities.dat.txt", function(err,data) {
