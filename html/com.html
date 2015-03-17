@@ -8,7 +8,7 @@ $(document).ready(function(){
     	var myobj = {Name:$("#Name").val(),Comment:$("#Comment").val()};
     	var jobj = JSON.stringify(myobj);
         $("#json").text(jobj);
-        var url = "alexcthomas.com/comment";
+        var url = "http://alexcthomas.com/comment";
         /*$.post(url,jobj,function(data,textStatus) {
           $("#done").append(textStatus);
         });*/
@@ -25,7 +25,7 @@ $(document).ready(function(){
 
     });
     $("#show").click(function(){
-       var url = "alexcthomas.com/comment";
+       var url = "http://alexcthomas.com/comment";
       $.getJSON(url,function(data) {
         var everything;
         everything = "<ul>";
