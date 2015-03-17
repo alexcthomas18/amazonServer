@@ -1,9 +1,11 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var https = require('https');
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
 var app = express();
+app.use(bodyParser());
 var options = {
     host: '127.0.0.1',
     key: fs.readFileSync('ssl/server.key'),
@@ -15,8 +17,6 @@ var options = {
   app.get('/getcity', function (req, res) {
     console.log("In getcity route");
     var urlObj = url.parse(req.url, true, false);
-    console.log(urlObj);
-		console.log("In GetCity");
 		fs.readFile("cities.dat.txt", function(err,data) {
 			if (err) throw err;
 			var cities = data.toString().split("\n");
@@ -34,4 +34,13 @@ var options = {
 			res.writeHead(200);
 			res.end(JSON.stringify(jsonresult));
 		});
+  });
+  app.get('/comment', function(req, res) {
+  	console.log("In comment route");
+  });
+  app.post('/comment', function (req, res) {
+  	console.log("In POST comment route");
+  	console.log(req.body);
+  	res.status(200);
+  	res.end();
   });
