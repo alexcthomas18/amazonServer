@@ -58,6 +58,14 @@ var options = {
   	console.log(req.body);
   	console.log(req.body.Name);
     console.log(req.body.Comment);
+    var MongoClient = require('mongodb').MongoClient;
+	MongoClient.connect("mongodb://localhost/weather", function(err, db) {
+		if(err) throw err;
+		db.collection('comments').insert(req.body,function(err, records) {
+		console.log("Record added as "+records[0]._id);
+		});
+
+	});
 	res.writeHead(200);
 	res.end("");
   });
