@@ -11,6 +11,4 @@ var options = {
 };
   http.createServer(app).listen(80);
   https.createServer(options, app).listen(443);
-  app.get('/', function (req, res) {
-    res.send("Get Index");
-  });
+  app.use('/', express.static('./html', {maxAge: 60*60*1000}));
