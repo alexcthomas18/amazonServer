@@ -13,7 +13,7 @@ var options = {
 };
   http.createServer(app).listen(80);
   https.createServer(options, app).listen(443);
-  app.use('/', express.static('./html', {maxAge: 1000}));
+  app.use('/', express.static('./html', {maxAge: 60}));
   app.get('/getcity', function (req, res) {
     console.log("In getcity route");
     var urlObj = url.parse(req.url, true, false);
@@ -56,24 +56,8 @@ var options = {
   app.post('/comment', function (req, res) {
   	console.log("In POST comment route");
   	console.log(req.body);
-  	var jsonData = "";
- 	req.on('data', function (chunk) {
-    	jsonData += chunk;
-  	});
-	req.on('end', function () {
-    	var reqObj = JSON.parse(jsonData);
-   		console.log(reqObj);
-    	console.log("Name: "+reqObj.Name);
-    	console.log("Comment: "+reqObj.Comment);
-    	var MongoClient = require('mongodb').MongoClient;
-		MongoClient.connect("mongodb://localhost/weather", function(err, db) {
-  			if(err) throw err;
-  			db.collection('comments').insert(reqObj,function(err, records) {
-    			console.log("Record added as "+records[0]._id);
-  			});
-
-		});
-	});
+  	console.log(req.body.Name);
+    console.log(req.body.Comment);
 	res.writeHead(200);
 	res.end("");
   });
