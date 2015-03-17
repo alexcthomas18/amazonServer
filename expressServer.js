@@ -47,7 +47,7 @@ var options = {
 				console.log("Document Array: ");
 				console.log(itemArr);
 				res.writeHead(200);
-				res.end(JSON.stringify(itemArr));
+				res.json(itemArr);
 			});
 		});
 	});
