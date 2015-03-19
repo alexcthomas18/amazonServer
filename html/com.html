@@ -21,12 +21,13 @@ $(document).ready(function(){
           success: function() {
             $("#done").append("Success!");
           }
-        });
+        })
 
     });
     $("#show").click(function(){
        var url = "http://alexcthomas.com/comment";
       $.getJSON(url,function(data) {
+	console.log("the data is " +data);
         var everything;
         everything = "<ul>";
         $.each(data, function(i,item) {
